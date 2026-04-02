@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>All Works</title>
+  <link href="https://fonts.cdnfonts.com/css/general-sans" rel="stylesheet">
+  <link rel="stylesheet" href="pages_styles.css">
+</head>
+<body>
+
+  <header class="topbar">
+    <div class="logo">Mohammed Othmane Boumchita</div>
+
+    <nav class="nav">
+      <a href="All_Works.html" class="active">All Work</a>
+      <a href="Branding.html" >Branding</a>
+      <a href="illustration.html">Illustration</a>
+      <a href="menu-design.html">Menu Design</a>
+      <a href="book-design.html">Book Design</a>
+      <a href="poster-design.html" >Poster Design</a>
+    </nav>
+  </header>
+
+  <div class="line"></div>
+
+  <div class="container">
+
+    <div class="left">
+      <br>
+
+      <p>
+        Hi, I’m Othmane, a graphic designer based in Fez.
+        I specialize in visual identity, poster design,
+        and editorial design, with a strong background in illustration.
+      </p>
+
+      <br>
+
+      <p>
+        Bonjour, je m’appelle Othmane, je suis graphiste basé à Fès.
+        Je me spécialise dans l’identité visuelle, le design d’affiches
+        et le design éditorial, avec une solide expérience en illustration.
+      </p>
+
+      <br>
+
+      <p>
+        مرحبًا، أنا عثمان، مصمم جرافيك مقيم في فاس
+        أختص في تصميم الهوية البصرية، وتصميم الملصقات
+        والتصميم التحريري، ولدي خبرة قوية في مجال الرسم التوضيحي.
+      </p>
+
+      <br>
+
+      <p>oboumchita2@gmail.com</p>
+      <p>Instagram</p>
+      <p>linkedin</p>
+      <p>Looking forward to hearing what on your mind</p>
+    </div>
+
+    <div class="right">
+      <video
+        class="work-video"
+        muted
+        autoplay
+        loop
+        playsinline
+        preload="metadata"
+        poster="all-works/anim-ajyal-poster.jpg"
+      >
+        <source src="all-works/anim-ajyal.webm" type="video/webm">
+        <source src="all-works/anim-ajyal.mp4" type="video/mp4">
+      </video>
+              <div class="caption">
+          <p>AJYAL Magazine</p>
+          <p>Editorial Design, illustration, 2025</p>
+        </div>
+
+      <video
+        class="work-video"
+        muted
+        autoplay
+        loop
+        playsinline
+        preload="metadata"
+        poster="all-works/seilam-project-poster.jpg"
+      >
+        <source src="all-works/seilam-project.mp4" type="video/mp4">
+        <source src="all-works/seilam-project.mp4" type="video/mp4">
+      </video>
+              <div class="caption">
+          <p>AJYAL Magazine</p>
+          <p>Editorial Design, illustration, 2025</p>
+        </div>
+
+    </div>
+
+
+  </div>
+
+  <script>
+    const videos = document.querySelectorAll('.work-video');
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        const video = entry.target;
+
+        if (entry.isIntersecting) {
+          video.play().catch(() => {});
+        } else {
+          video.pause();
+        }
+      });
+    }, {
+      threshold: 0.25
+    });
+
+    videos.forEach((video) => {
+      observer.observe(video);
+    });
+  </script>
+
+</body>
+</html>

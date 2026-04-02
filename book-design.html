@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book Design</title>
+  <link href="https://fonts.cdnfonts.com/css/general-sans" rel="stylesheet">
+  <link rel="stylesheet" href="pages_styles.css">
+</head>
+<body>
+
+  <!-- Top Navigation -->
+  <header class="topbar">
+    <div class="logo">Mohammed Othmane Boumchita</div>
+
+    <nav class="nav">
+      <a href="All_Works.html">All Work</a>
+      <a href="Branding.html" >Branding</a>
+      <a href="illustration.html">Illustration</a>
+      <a href="menu-design.html">Menu Design</a>
+      <a href="book-design.html" class="active">Book Design</a>
+      <a href="poster-design.html">Poster Design</a>
+    </nav>
+  </header>
+
+  <div class="line"></div>
+
+  <!-- Main Layout -->
+  <main class="container">
+
+    <!-- Left Column -->
+    <aside class="left">
+            <!-- Project Info Block -->
+      <div class="project-info">
+        <div class="info-labels">
+          <p>Project</p>
+          <p>Client</p>
+          <p>Nature</p>
+          <p>Date</p>
+          <p>Format</p>
+          <p>Pages</p>
+
+        </div>
+
+        <div class="info-values">
+          <p>AJYAL Magazine</p>
+          <p>Graduation Project</p>
+          <p>Book Design&illustration</p>
+          <p>June 2025</p>
+          <p>210 x 297 mm</p>
+          <p>95</p>
+        </div>
+      </div>
+      <p>
+‘‘Despite the limited production of comic books in Morocco,
+this art form is striving to establish itself among other artistic mediums’’
+      </p>
+
+      <br>
+
+      <p>
+AJYAL ‘s vision is ambitious and inspiring! striving to elevate
+the Moroccan comic book artistry to the global stage
+akin to marvel ,DC or Shonen jump, is no small.
+      </p>
+            <br>
+
+      <p>
+It tackles these subjects by providing opportunities
+to the community through seasonal comic competitions
+offering a chance for selected works to be serialized.
+      </p>
+            <br>
+
+      <p>
+AJYAL follows the traditional comic book format
+starting with a news section before diving into
+the latest monthly chapters of serialized comics
+AJYAL extends to digital platforms,
+with both a dedicated website and a mobile application.
+      </p>
+            <br>
+
+      <p>
+You might see it as just a comic book magazine
+but the way I see it, it has the power to shape future generations.
+      </p>
+
+    </aside>
+
+    <!-- Right Column -->
+    <section class="right">
+        <article class="work-item">
+        <div class="media-box">
+          <video
+            class="work-video"
+            muted
+            autoplay
+            loop
+            playsinline
+            preload="metadata"
+            poster="all-works/anim-ajyal.jpg"
+          >
+            <source src="all-works/anim-ajyal.webm" type="video/webm">
+            <source src="all-works/anim-ajyal.mp4" type="video/mp4">
+          </video>
+        </div>
+                <div class="caption">
+          <p>In the early stages of AJYAL’s development, I envisioned it as a magazine
+with a presence in both digital and print formats.
+
+</p>
+        </div>
+
+      </article>
+
+
+      <!-- Item 1 -->
+      <article class="work-item">
+
+        <div class="media-box">
+          <img src="book-design/b1.png" alt="Project 1">
+        </div>
+      </article>
+
+      <!-- Item 2 -->
+      <article class="work-item">
+        <div class="media-box">
+          <img src="book-design/b2.png" alt="Project 2">
+        </div>
+      </article>
+      <!-- Item 3 -->
+      <article class="work-item">
+        <div class="media-box">
+          <img src="book-design/b3.png" alt="Project 3">
+        </div>
+      </article>
+      <!-- Item 4 -->
+      <article class="work-item">
+        <div class="media-box">
+          <img src="book-design/b4.png" alt="Project 4">
+        </div>
+      <!-- Item 5 -->
+      <article class="work-item">
+        <div class="media-box">
+          <img src="book-design/b5.png" alt="Project 5">
+        </div>
+
+      <!-- Item 6 -->
+      <article class="work-item">
+        <div class="media-box">
+          <img src="book-design/b6.png" alt="Project 6">
+        </div>
+
+      </video>
+
+
+      </article>
+  <script>
+    const videos = document.querySelectorAll('.work-video');
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        const video = entry.target;
+
+        if (entry.isIntersecting) {
+          video.play().catch(() => {});
+        } else {
+          video.pause();
+        }
+      });
+    }, {
+      threshold: 0.25
+    });
+
+    videos.forEach((video) => {
+      observer.observe(video);
+    });
+  </script>
+
+
+</body>
+</html>
