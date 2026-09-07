@@ -11,12 +11,20 @@ body {
   overflow-x: hidden;
 }
 
-/* Top bar */
+/* =================================
+   TOP BAR - STAYS FIXED
+   ================================= */
+
 .topbar {
   display: grid;
   grid-template-columns: minmax(260px, 30%) minmax(0, 70%);
   align-items: center;
   padding: 15px 40px;
+
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: #ffffff;
 }
 
 /* Logo */
@@ -29,17 +37,22 @@ body {
   white-space: nowrap;
 }
 
-/* Navigation */
+/* =================================
+   NAVIGATION
+   ================================= */
+
 .nav {
   display: flex;
   justify-content: flex-start;
-  gap: clamp(24px, 4vw, 90px);
+  gap: clamp(20px, 3.5vw, 75px);
   padding-left: 30px;
   flex-wrap: wrap;
+  align-items: center;
 }
 
 .nav a {
-  position: relative; /* important */
+  position: relative;
+  display: inline-block;
   text-decoration: none;
   color: #0043d5;
   font-size: clamp(13px, 1vw, 16px);
@@ -49,36 +62,52 @@ body {
   white-space: nowrap;
 }
 
-/* Remove underline */
+.nav a:hover {
+  opacity: 0.65;
+}
+
 .nav a.active {
   text-decoration: none;
 }
 
-/* ICON ABOVE ACTIVE LINK */
+/* Active navigation icon */
 .nav a.active::before {
   content: "";
   position: absolute;
-  bottom: -5%; /* controls vertical position */
-  left: -4%;
+  bottom: 100%;
+  left: 50%;
   transform: translateX(-50%);
-  
-  width: 40px;   /* adjust size */
-  height: 40px;
+  margin-bottom: 2px;
 
-  background: url("other/aby@2x.png") no-repeat center;
+  width: 30px;
+  height: 30px;
+
+  background-image: url("assets/nav-icon.png");
+  background-repeat: no-repeat;
+  background-position: center;
   background-size: contain;
 
   pointer-events: none;
 }
 
-/* Horizontal line */
+/* =================================
+   HORIZONTAL LINE
+   ================================= */
+
 .line {
   width: 100%;
   height: 2px;
   background: #0043d5;
+
+  position: sticky;
+  top: 54px;
+  z-index: 999;
 }
 
-/* Main layout */
+/* =================================
+   MAIN LAYOUT
+   ================================= */
+
 .container {
   display: grid;
   grid-template-columns: minmax(260px, 30%) minmax(0, 70%);
@@ -86,79 +115,127 @@ body {
   align-items: start;
 }
 
-/* Left column */
+/* =================================
+   LEFT COLUMN - STAYS STATIC
+   ================================= */
+
 .left {
-  padding: 30px 20px 0 0;
+  padding: 0 20px 0 0;
+
   font-size: clamp(14px, 1.2vw, 19px);
   line-height: 1.05;
   font-weight: 500;
   font-style: italic;
+
   min-width: 0;
+
+  position: sticky;
+  top: 85px;
+
+  max-height: calc(100vh - 85px);
+  overflow-y: auto;
+
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
 
-/* Project info block */
+.left::-webkit-scrollbar {
+  display: none;
+}
+
+/* =================================
+   PROJECT INFORMATION
+   ================================= */
+
 .project-info {
   display: grid;
-  grid-template-columns: 1fr 1.4fr;
-  gap: 28px;
-  margin-bottom: 55px;
+  grid-template-columns: minmax(120px, 1fr) minmax(0, 1.35fr);
+  column-gap: 35px;
   align-items: start;
+  margin-bottom: 55px;
 }
 
-.info-labels,
+/* LEFT LABELS */
+
+.info-labels {
+  display: flex;
+  flex-direction: column;
+}
+
+.info-labels p {
+  margin: 0;
+
+  font-family: 'General Sans', sans-serif;
+  font-style: italic;
+  font-weight: 500;
+
+  min-height: 30px;
+  line-height: 30px;
+}
+
+/* RIGHT VALUES */
+
 .info-values {
   display: flex;
   flex-direction: column;
-  gap: 14px;
 }
 
-.info-labels p,
 .info-values p {
   margin: 0;
-}
 
-/* Paragraph block */
+  font-family: 'Gambetta', serif;
+  font-style: italic;
+  font-weight: 300;
+
+  font-size: clamp(16px, 1.45vw, 23px);
+  line-height: 30px;
+
+  letter-spacing: -1.15px;
+  color: #0043D5;
+
+  min-height: 30px;
+}
+/* First line of captions on All Work page */
+.all-work-page .caption p:first-child {
+  font-family: 'General Sans', sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 25px;
+  letter-spacing: -1px;
+  color: #0043D5;
+}
+/* =================================
+   DESCRIPTION
+   ================================= */
+
 .project-text {
   display: flex;
   flex-direction: column;
   gap: 34px;
 }
 
-/* Button */
-.switch-btn {
-  margin-top: 34px;
-  padding: 12px 18px;
-  border: 2px solid #0043d5;
-  background: transparent;
-  color: #0043d5;
-  font-family: 'General Sans', sans-serif;
-  font-size: clamp(13px, 1vw, 16px);
-  font-weight: 500;
-  font-style: italic;
-  cursor: pointer;
-  transition: background 0.2s ease, color 0.2s ease;
-}
-
-.switch-btn:hover {
-  background: #0043d5;
-  color: #ffffff;
-}
-
 .project-text p {
   margin: 0;
 }
 
-/* Right column */
+/* =================================
+   RIGHT COLUMN
+   ================================= */
+
 .right {
   padding: 30px 0 0 30px;
   border-left: 2px solid #0043d5;
+
   display: grid;
   grid-template-columns: 1fr;
   gap: 36px;
+
   min-width: 0;
 }
 
-/* Media */
+/* Images and videos */
+
 .right img,
 .right video {
   width: 100%;
@@ -171,16 +248,252 @@ body {
   width: 100%;
 }
 
-/* Caption if needed later */
-.caption {
-  font-size: clamp(14px, 1.2vw, 20px);
-  line-height: 1.3;
-  font-weight: 500;
-  font-style: italic;
+.work-item {
+  display: block;
 }
 
-/* Large tablets / smaller laptops */
+/* =================================
+   CAPTIONS
+   ================================= */
+
+.caption {
+  margin-top: 12px;
+
+  font-size: clamp(24px, 1.4vw, 22px);
+  line-height: 1.3;
+
+  font-family: 'Gambetta', serif;
+  font-style: italic;
+  font-weight: 300;
+  letter-spacing: -1.2px;
+
+  color: #0043D5;
+  text-align: left;
+  opacity: 1;
+}
+
+/* =================================
+   SPACING FOR ONLY THE POSTER DESIGN
+   ================================= */
+
+.poster-page .right {
+  gap: 8px;
+}
+
+
+/* =================================
+   BRANDING SPECIAL NAMES
+   ================================= */
+
+.concept-name {
+  font-family: 'General Sans', sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 30px;
+  letter-spacing: -1.2px;
+  color: #0043D5;
+  text-transform: uppercase;
+}
+
+/* =================================
+   CONTACT PAGE
+   ================================= */
+
+/* Left contact information */
+
+.contact-left {
+  padding-top: 30px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  letter-spacing: -1.68px;
+  font-size: clamp(22px, 1.2vw, 19px);
+  line-height: 1.3;
+  font-family: 'Gambetta', serif;
+  font-weight: 500;
+}
+
+.contact-left a {
+  color: #0043d5;
+  text-decoration: none;
+}
+
+.contact-left a:hover {
+  opacity: 0.65;
+}
+
+.contact-message {
+  margin-top: 10px;
+}
+
+/* Contact right section */
+
+.contact-right {
+  min-height: calc(100vh - 70px);
+
+  padding: 30px 30px 60px 30px;
+
+  border-left: 2px solid #0043d5;
+}
+
+/* =================================
+   CONTACT SOCIAL ICONS
+   ================================= */
+
+.social-icons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  gap: 45px;
+
+  margin-top: 5px;
+  margin-bottom: 70px;
+}
+
+.social-icons a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #0043d5;
+  text-decoration: none;
+
+  font-size: 27px;
+
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease;
+}
+
+.social-icons a:hover {
+  opacity: 0.65;
+  transform: translateY(-2px);
+}
+
+/* =================================
+   CONTACT FORM
+   ================================= */
+
+.contact-form {
+  width: min(100%, 760px);
+  margin: 0 auto;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+
+  margin-bottom: 18px;
+}
+
+.form-group label {
+  margin-bottom: 10px;
+
+  font-family: 'General Sans', sans-serif;
+  font-size: clamp(14px, 1.1vw, 18px);
+
+  font-weight: 600;
+  font-style: normal;
+
+  color: #0043d5;
+}
+
+/* Input fields */
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+
+  padding: 12px;
+
+  border: 1.5px solid #0043d5;
+  border-radius: 3px;
+
+  outline: none;
+
+  background: #ffffff;
+  color: #0043d5;
+
+  font-family: 'General Sans', sans-serif;
+
+  font-size: clamp(16px, 1.3vw, 21px);
+
+  resize: vertical;
+}
+
+/* Name box */
+
+.name-field {
+  height: 55px;
+}
+
+/* Email box */
+
+.form-group input {
+  height: 55px;
+}
+
+/* Message box */
+
+.message-field {
+  min-height: 165px;
+}
+
+/* Placeholder text */
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: #91afff;
+  opacity: 1;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  border-width: 2px;
+}
+
+/* =================================
+   CONTACT BUTTON
+   ================================= */
+
+.contact-form button {
+  min-width: 145px;
+
+  padding: 12px 25px;
+
+  border: 1.5px solid #0043d5;
+  border-radius: 6px;
+
+  background: #ffffff;
+  color: #0043d5;
+
+  font-family: 'General Sans', sans-serif;
+
+  font-size: 19px;
+  font-weight: 600;
+  font-style: italic;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
+}
+
+.contact-form button:hover {
+  background: #0043d5;
+  color: #ffffff;
+}
+
+/* =================================
+   SMALLER LAPTOPS / TABLETS
+   ================================= */
+
 @media (max-width: 1200px) {
+
   .topbar {
     grid-template-columns: 260px 1fr;
     padding: 15px 24px;
@@ -192,7 +505,7 @@ body {
   }
 
   .nav {
-    gap: 28px;
+    gap: 24px;
     padding-left: 24px;
   }
 
@@ -200,14 +513,28 @@ body {
     padding-left: 24px;
   }
 
+  .contact-right {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
   .project-info {
-    grid-template-columns: 1fr 1.2fr;
-    gap: 20px;
+    grid-template-columns: 90px 1fr;
+    column-gap: 18px;
+  }
+
+  .info-values p {
+    font-size: 17px;
+    letter-spacing: -0.7px;
   }
 }
 
-/* Tablets */
+/* =================================
+   TABLETS
+   ================================= */
+
 @media (max-width: 900px) {
+
   .topbar {
     grid-template-columns: 1fr;
     gap: 14px;
@@ -219,13 +546,22 @@ body {
     gap: 18px;
   }
 
+  .line {
+    position: static;
+  }
+
   .container {
     grid-template-columns: 1fr;
     padding: 0 20px 24px 20px;
   }
 
   .left {
+    position: static;
+    max-height: none;
+    overflow: visible;
+
     padding: 24px 0;
+
     border-bottom: 2px solid #0043d5;
   }
 
@@ -234,15 +570,32 @@ body {
     border-left: none;
   }
 
+  .contact-right {
+    padding: 30px 0;
+    border-left: none;
+  }
+
   .project-info {
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
+    grid-template-columns: minmax(100px, 30%) 1fr;
+    column-gap: 25px;
     margin-bottom: 38px;
+  }
+
+  .info-values p {
+    font-size: 18px;
+  }
+
+  .social-icons {
+    margin-bottom: 50px;
   }
 }
 
-/* Phones */
+/* =================================
+   PHONES
+   ================================= */
+
 @media (max-width: 600px) {
+
   .topbar {
     padding: 14px 16px;
   }
@@ -252,33 +605,139 @@ body {
   }
 
   .nav {
-    gap: 14px;
+    gap: 10px;
   }
 
   .nav a {
     font-size: 13px;
   }
-
+.right {
+  gap: 14px;
+}
   .left {
     font-size: 14px;
     line-height: 1.1;
+  }
+
+  .project-info {
+    grid-template-columns: 90px minmax(0, 1fr);
+    column-gap: 15px;
+  }
+
+  .info-labels p {
+    min-height: 25px;
+    line-height: 25px;
+  }
+
+  .info-values p {
+    font-size: 15px;
+    line-height: 25px;
+    min-height: 25px;
+    letter-spacing: -0.5px;
   }
 
   .caption {
     font-size: 14px;
   }
 
-  .project-info {
-    grid-template-columns: 1fr;
-    gap: 24px;
+  .all-work-page .caption p:first-child {
+    font-size: 14px;
+    line-height: 16px;
   }
 
-  .info-labels,
-  .info-values {
-    gap: 10px;
+  .social-icons {
+    gap: 30px;
+    margin-bottom: 40px;
   }
 
-  .project-text {
-    gap: 24px;
+  .social-icons a {
+    font-size: 24px;
+  }
+
+  .name-field {
+    min-height: 120px;
+  }
+
+  .message-field {
+    min-height: 140px;
+  }
+
+  .contact-form button {
+    width: 100%;
   }
 }
+
+/* =================================
+   ALL WORK PROJECT LINKS
+   ================================= */
+
+.project-link {
+  display: block;
+  width: 100%;
+
+  text-decoration: none;
+  color: inherit;
+
+  cursor: pointer;
+}
+
+
+/* Small visual feedback when hovering */
+
+.project-link video,
+.project-link .image-slideshow {
+  transition: opacity 0.25s ease;
+}
+
+.project-link:hover video,
+.project-link:hover .image-slideshow {
+  opacity: 0.88;
+}
+
+
+/* =================================
+   AUTOMATIC IMAGE SLIDESHOWS
+   ================================= */
+
+.image-slideshow {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+
+/* Hidden images */
+
+.image-slideshow .slideshow-image {
+  width: 100%;
+  height: auto;
+
+  display: none;
+
+  object-fit: cover;
+}
+
+
+/* Visible image */
+
+.image-slideshow .slideshow-image.active {
+  display: block;
+
+  animation: imageFade 0.8s ease;
+}
+
+
+/* Fade transition 
+
+@keyframes imageFade {
+
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+
+}
+  */
